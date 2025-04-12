@@ -9,10 +9,10 @@ const Dish = require('./models/dishModel');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware to parse JSON bodies from HTTP requests
+// Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
-// Serve static files (like index.html) from the public directory
+// Serve static files from the public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to MongoDB using Mongoose
@@ -34,10 +34,23 @@ app.get('/api/dishes', async (req, res) => {
   }
 });
 
-// GET /api/dishes/:name - Retrieve a single dish by name
-app.get('/api/dishes/:name', async (req, res) => {
+// GET /api/dishes/name/:name - Retrieve a dish by name
+app.get('/api/dishes/name/:name', async (req, res) => {
   try {
     const dish = await Dish.findOne({ name: req.params.name });
+    if (!dish) {
+      return res.status(404).json({ error: 'Dish not found' });
+    }
+    res.json(dish);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// GET /api/dishes/id/:id - Retrieve a dish by _id
+app.get('/api/dishes/id/:id', async (req, res) => {
+  try {
+    const dish = await Dish.findById(req.params.id);
     if (!dish) {
       return res.status(404).json({ error: 'Dish not found' });
     }
@@ -50,7 +63,7 @@ app.get('/api/dishes/:name', async (req, res) => {
 // POST /api/dishes - Add a new dish
 app.post('/api/dishes', async (req, res) => {
   try {
-    // Check if the dish already exists
+    // Check if a dish with the same name already exists
     const existingDish = await Dish.findOne({ name: req.body.name });
     if (existingDish) {
       return res.status(409).json({ error: 'Dish already exists' });

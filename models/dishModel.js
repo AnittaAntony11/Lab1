@@ -1,4 +1,4 @@
-// models/dishModel.js
+
 const mongoose = require('mongoose');
 
 // Define a Mongoose schema for dishes

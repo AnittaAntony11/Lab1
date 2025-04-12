@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #fafafa; /* Light background for contrast */
+  }
+  
+  .main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    margin-top: 0;
+    text-align: center;
+  }
+  
+  .forms-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .form-box {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 4px;
+    min-height: 400px;
+  }
+  
+  .form-box h2 {
+    margin-top: 0;
+  }
+  
+  label {
+    display: block;
+    margin-top: 0.8rem;
+    font-weight: 600;
+  }
+  
+  input, select, button {
+    margin-top: 0.3rem;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  button {
+    margin-top: 1rem;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #updateDishForm {
+    display: none;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+  }
+  
+  table, th, td {
+    border: 1px solid #ccc;
+  }
+  
+  th, td {
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #eee;
+  }
+  
+  .actions button {
+    margin-right: 0.5rem;
+    cursor: pointer;
+    background-color: #6c757d;
+  }
+  
+  .actions button:hover {
+    background-color: #5a6268;
+  }
+  
+  .actions button.update {
+    background-color: #28a745;
+  }
+  
+  .actions button.update:hover {
+    background-color: #218838;
+  }
+  
